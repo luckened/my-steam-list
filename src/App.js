@@ -1,8 +1,7 @@
-import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import Header from "./components/header";
 import Footer from "./components/footer";
-import GameCard from "./components/gameCard"
+import GameCard from "./components/gameCard";
 
 function App() {
     return (
