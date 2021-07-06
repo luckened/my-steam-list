@@ -1,8 +1,8 @@
-import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Profile from "./pages/profile/index";
+import GameCard from "./components/gameCard";
 
 function App() {
     return (
@@ -10,7 +10,7 @@ function App() {
             <Header />
             <Switch>
                 <Route path="/" exact>
-                    {/* Component */}
+                    {GameCard}
                 </Route>
                 <Route path="/home">{/* Component */}</Route>
                 <Route path="/profile">
