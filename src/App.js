@@ -2,6 +2,7 @@ import logo from "./assets/logo.svg";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import Header from "./components/header";
+import Footer from "./components/footer";
 
 function App() {
     return (
@@ -15,7 +16,7 @@ function App() {
                 <Route path="/home">{/* Component */}</Route>
                 <Route path="/users">{/* Component */}</Route>
             </Switch>
-            <footer />
+            <Footer />
         </div>
     );
 }

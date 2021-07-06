@@ -1,0 +1,23 @@
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: black;
+    color: white;
+    height: 98px;
+    position: absolute;
+    bottom: 0;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0 10px;
+}
+
+.icon:not(:last-child) {
+    margin-right: 5px;
+}
