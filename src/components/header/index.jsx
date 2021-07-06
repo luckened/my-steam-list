@@ -6,14 +6,24 @@ import { FaList, FaRegMoon, FaRegGrinStars } from "react-icons/fa";
 const Header = ({ isLogged }) => (
     <header className={styles.header}>
         <nav className={styles.nav}>
-            <Link to="/home"><img src={logo} className={styles.logo} alt="logo" /></Link>
+            <Link to="/home">
+                <img src={logo} className={styles.logo} alt="logo" />
+            </Link>
             <Link to="/mylist" className={styles.myListButton}>
                 <FaList color="white" size={30} />
                 Minha Lista
             </Link>
+            <Link to="/profile" className={styles.myListButton}>
+                <FaList color="white" size={30} />
+                Perfil
+            </Link>
         </nav>
         <span>
-            <FaRegMoon color="white" size={30} className={styles.darkModeButton} />
+            <FaRegMoon
+                color="white"
+                size={30}
+                className={styles.darkModeButton}
+            />
             <FaRegGrinStars color="white" size={30} />
         </span>
     </header>
