@@ -8,6 +8,7 @@ import styles from "./index.module.css";
 
 const App = () => {
     const [darkMode, setDarkMode] = useState(true);
+    import Profile from "./pages/profile/index";
 
     return (
         <div className={`${styles.app} ${darkMode ? styles.appDark : ""}`}>
@@ -21,6 +22,10 @@ const App = () => {
                     <Profile darkMode={darkMode} isMyProfile={true} />
                 </Route>
                 <Route path="/users">{/* Component */}</Route>
+                <Route path="/home">{/* Component */}</Route>
+                <Route path="/profile">
+                    <Profile isMyProfile={true} />
+                </Route>
                 <Route path="/mylist">{/* Component */}</Route>
             </Switch>
             <Footer darkMode={darkMode} />
