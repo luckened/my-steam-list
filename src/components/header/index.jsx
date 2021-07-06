@@ -13,6 +13,10 @@ const Header = ({ isLogged, darkMode, setDarkMode }) => (
                 <FaList className={styles.listIcon} color="white" size={25} />
                 Minha Lista
             </Link>
+            <Link to="/profile" className={styles.myListButton}>
+                <FaList color="white" size={30} />
+                Perfil
+            </Link>
         </nav>
         <input
             onChange={() => setDarkMode(!darkMode)}

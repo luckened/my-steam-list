@@ -1,0 +1,19 @@
+.profileContainer {
+    background-color: black;
+    height: 100%;
+    padding: 2% 20%;
+}
+
+.pageHeader {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pageName {
+    color: white;
+}
+
+.editProfile {
+    justify-content: flex-end;
+}

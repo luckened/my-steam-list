@@ -1,0 +1,17 @@
+.userDataContainer {
+    display: flex;
+}
+
+.profileImage {
+    width: 200px;
+    height: 200px;
+}
+
+.profileTextContainer {
+    padding: 0px 10px;
+}
+
+.profileText {
+    margin: 0px 0px 10px 0px;
+    text-align: left;
+}
