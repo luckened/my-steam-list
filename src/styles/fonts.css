@@ -11,3 +11,17 @@
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: "Sansation";
+    src: url("../assets/fonts/Sansation-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "SansationLight";
+    src: url("../assets/fonts/Sansation-Light.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
