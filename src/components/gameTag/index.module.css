@@ -1,8 +1,8 @@
 .tag {
-    background-color: #171a21;
+    background-color: var(--dark-secondary);
     border: 1px solid #57ad42;
     border-radius: 50px;
-    color: #ffffff;
+    color: var(--light-primary);
     padding: 0px 15px;
     display: flex;
     align-items: center;

@@ -2,8 +2,18 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-html {
+html,
+body,
+#root {
     height: 100%;
+}
+
+:root {
+    --dark-primary: #000;
+    --dark-secondary: #171a21;
+    --dark-tertiary: #1d1e20;
+    --light-primary: #fff;
+    --light-secondary: #616161;
 }
 
 html,
@@ -129,4 +139,7 @@ q:after {
 table {
     border-collapse: collapse;
     border-spacing: 0;
+}
+*:visited {
+    color: unset;
 }

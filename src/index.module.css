@@ -1,0 +1,9 @@
+.app {
+    height: 100%;
+    background-color: var(--light-secondary);
+    transition: 0.5s;
+}
+
+.appDark {
+    background-color: var(--dark-tertiary);
+}
