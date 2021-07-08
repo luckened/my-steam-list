@@ -1,27 +1,24 @@
+import { FaList } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logonobackground.svg";
 import styles from "./index.module.css";
-import { FaList, FaRegMoon, FaRegGrinStars } from "react-icons/fa";
 
-const Header = ({ isLogged }) => (
-    <header className={styles.header}>
+const Header = ({ isLogged, darkMode, setDarkMode }) => (
+    <header className={`${styles.header} ${darkMode ? styles.headerDark : ""}`}>
         <nav className={styles.nav}>
-            <Link to="/home">
+            <Link to="/">
                 <img src={logo} className={styles.logo} alt="logo" />
             </Link>
             <Link to="/mylist" className={styles.myListButton}>
-                <FaList color="white" size={30} />
+                <FaList className={styles.listIcon} color="white" size={25} />
                 Minha Lista
             </Link>
         </nav>
-        <span>
-            <FaRegMoon
-                color="white"
-                size={30}
-                className={styles.darkModeButton}
-            />
-            <FaRegGrinStars color="white" size={30} />
-        </span>
+        <input
+            onChange={() => setDarkMode(!darkMode)}
+            className={styles.toggle}
+            type="checkbox"
+        />
     </header>
 );
 

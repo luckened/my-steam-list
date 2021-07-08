@@ -1,19 +1,21 @@
+@import url("../../styles/index.css");
+
 .footer {
+    background-color: var(--dark-tertiary);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 50px;
     width: 100%;
     box-sizing: border-box;
-    background-color: black;
-    color: white;
+    color: var(--light-primary);
     height: 98px;
     position: absolute;
     bottom: 0;
 }
 
-span {
-    font-family: "Biryani", sans-serif;
+.footerDark {
+    background-color: var(--dark-secondary);
 }
 
 .icons {
