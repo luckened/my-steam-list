@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import Header from "./components/header";
 import Footer from "./components/footer";
-import GameCard from "./components/gameCard";
+import GameCardGroup from "./components/gameCard";
 import styles from "./index.module.css";
 
 const App = () => {
@@ -13,7 +13,7 @@ const App = () => {
             <Header darkMode={darkMode} setDarkMode={setDarkMode} />
             <Switch>
                 <Route path="/" exact>
-                    {GameCard}
+                    {GameCardGroup}
                 </Route>
                 <Route path="/users">{/* Component */}</Route>
                 <Route path="/mylist">{/* Component */}</Route>

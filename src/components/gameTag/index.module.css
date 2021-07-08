@@ -1,12 +1,16 @@
 .tag {
-    background-color: var(--dark-secondary);
+    font-family: "SansationLight", sans-serif;
+    background-color: #171a21;
     border: 1px solid #57ad42;
     border-radius: 50px;
-    color: var(--light-primary);
-    padding: 0px 15px;
+    color: #ffffff;
+    padding: 3px 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: nowrap;
     flex-shrink: 0;
+}
+
+.tag:not(:last-child) {
+    margin-right: 20px;
 }
