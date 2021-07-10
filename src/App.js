@@ -3,19 +3,18 @@ import { Switch, Route } from "react-router-dom";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Profile from "./pages/profile/index";
-import { GameCardGroup } from "./components/gameCard";
 import styles from "./index.module.css";
+import Home from "./pages/home";
 
 const App = () => {
     const [darkMode, setDarkMode] = useState(true);
-    import Profile from "./pages/profile/index";
 
     return (
         <div className={`${styles.app} ${darkMode ? styles.appDark : ""}`}>
             <Header darkMode={darkMode} setDarkMode={setDarkMode} />
             <Switch>
                 <Route path="/" exact>
-                    {GameCardGroup}
+                    <Home darkMode={darkMode} setDarkMode={setDarkMode} />
                 </Route>
                 <Route path="/home">{/* Component */}</Route>
                 <Route path="/profile">
