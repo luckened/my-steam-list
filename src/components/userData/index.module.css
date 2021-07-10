@@ -1,5 +1,6 @@
 .userDataContainer {
     display: flex;
+    height: 100%;
 }
 
 .profileImage {
@@ -14,4 +15,5 @@
 .profileText {
     margin: 0px 0px 10px 0px;
     text-align: left;
+    color: white;
 }
