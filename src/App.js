@@ -24,7 +24,7 @@ const App = () => {
                 <Route path="/users">{/* Component */}</Route>
                 <Route path="/home">{/* Component */}</Route>
                 <Route path="/profile">
-                    <Profile isMyProfile={true} />
+                    <Profile darkMode={darkMode} isMyProfile={true} />
                 </Route>
                 <Route path="/mylist">{/* Component */}</Route>
             </Switch>
