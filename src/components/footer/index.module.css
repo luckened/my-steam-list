@@ -10,7 +10,7 @@
     box-sizing: border-box;
     color: var(--light-primary);
     height: 98px;
-    position: absolute;
+    position: relative;
     bottom: 0;
 }
 

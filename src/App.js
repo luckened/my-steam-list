@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import Header from "./components/header";
 import Footer from "./components/footer";
-import { GameCardGroup } from "./components/gameCard";
 import styles from "./index.module.css";
+import Home from "./pages/home";
 
 const App = () => {
     const [darkMode, setDarkMode] = useState(true);
@@ -13,7 +13,7 @@ const App = () => {
             <Header darkMode={darkMode} setDarkMode={setDarkMode} />
             <Switch>
                 <Route path="/" exact>
-                    {GameCardGroup}
+                    <Home darkMode={darkMode} setDarkMode={setDarkMode} />
                 </Route>
                 <Route path="/users">{/* Component */}</Route>
                 <Route path="/mylist">{/* Component */}</Route>

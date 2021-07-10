@@ -1,0 +1,51 @@
+.homeContainer {
+	height: 100%;
+	width: 80%;
+	margin: 10px auto;
+}
+/* A class named search rounded with gray background */
+.search {
+	background: var(--dark-tertiary);
+	fill: var(--light-primary);
+	color: white;
+	border-radius: 50px;
+	font-weight: bold;
+	line-height: 18px;
+	display: flex;
+	padding: 20px;
+	max-width: 422px;
+	transition: all 500ms;
+}
+
+.searchDark {
+	background: var(--light-secondary);
+	fill: var(--dark-tertiary);
+}
+
+.searchIcon {
+	margin-right: 30px;
+	fill: inherit;
+}
+
+.search input {
+	font-family: "SansationLight", sans-serif;
+	font-size: 1.5rem;
+	background-color: inherit;
+	color: inherit;
+	border: none;
+	border-color: inherit;
+	width: 80%;
+}
+.search input::placeholder {
+	color: inherit;
+}
+.search input:focus {
+	border: none;
+	outline-color: transparent;
+
+	/* background: red; */
+}
+
+/* .cardGroup {
+	width: 80vw;
+} */
