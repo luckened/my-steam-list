@@ -1,19 +1,85 @@
 .userDataContainer {
     display: flex;
+    font-family: "SansationLight", sans-serif;
     height: 100%;
+}
+
+.userDataContainerDark {
+    color: var(--light-primary);
 }
 
 .profileImage {
     width: 200px;
     height: 200px;
+    margin: 0 15px 15px 0;
+    border-radius: 8px;
+    display: block;
+}
+
+.profileEditButton {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.uploadPhoto {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
 }
 
 .profileTextContainer {
-    padding: 0px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
 }
 
-.profileText {
-    margin: 0px 0px 10px 0px;
-    text-align: left;
-    color: white;
+.profileTextContainer > input,
+.profileTextContainer > textarea {
+    transition: 0.5s;
+    font-family: inherit;
+    font-size: inherit;
+    background-color: inherit;
+    border: 1px solid var(--dark-primary);
+    color: var(--light-primary);
+    overflow: hidden;
+    padding: 5px;
+}
+
+.profileTextContainerDark > input,
+.profileTextContainerDark > textarea {
+    border: 1px solid var(--light-primary);
+}
+
+.profileUsername {
+    font-size: 1.75rem;
+}
+
+.profileEmail {
+    font-style: italic;
+}
+
+.profileUsername,
+.profileEmail,
+.profileBio {
+    border-radius: 8px;
+    background-image: none;
+    margin-bottom: 15px;
+    resize: none;
+}
+
+.updateProfileButton {
+    transition: 0.5s;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 20px;
+    color: var(--light-primary);
+    border: 1px solid var(--dark-primary);
+}
+
+.updateProfileButtonDark {
+    background-color: var(--dark-tertiary);
+    border-color: var(--light-primary);
+    color: var(--light-primary);
 }
