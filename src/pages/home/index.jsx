@@ -3,10 +3,8 @@ import { ReactComponent as SearchIcon } from "../../assets/search.svg";
 import { a } from "./cardList";
 import styles from "./index.module.css";
 
-// A functional component named home that renders the GameCardGroup component.
 const Home = ({ darkMode, setDarkMode }) => (
     <div className={styles.homeContainer}>
-        {/* Div element with className styles.search that contains an input and an image  */}
         <div
             className={`${styles.search} ${darkMode ? styles.searchDark : ""}`}
         >
