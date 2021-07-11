@@ -5,16 +5,22 @@ import Footer from "./components/footer";
 import Profile from "./pages/profile/index";
 import Home from "./pages/home";
 import MyList from "./pages/myList";
+import Game from "./pages/game";
 import styles from "./index.module.css";
 
 const App = () => {
     const [darkMode, setDarkMode] = useState(true);
     const [isLogged, setIsLogged] = useState(false);
+    const gameId = "cs:go";
 
     return (
         <div className={`${styles.app} ${darkMode ? styles.appDark : ""}`}>
-            <Header darkMode={darkMode} setDarkMode={setDarkMode}
-                isLogged={isLogged} setIsLogged={setIsLogged} />
+            <Header
+                darkMode={darkMode}
+                setDarkMode={setDarkMode}
+                isLogged={isLogged}
+                setIsLogged={setIsLogged}
+            />
             <Switch>
                 <Route path="/" exact>
                     <Home darkMode={darkMode} setDarkMode={setDarkMode} />
@@ -26,6 +32,10 @@ const App = () => {
                 </Route>
                 <Route path="/mylist">
                     <MyList />
+                </Route>
+
+                <Route path={`/game/${gameId}`}>
+                    <Game id={gameId} />
                 </Route>
             </Switch>
             <Footer darkMode={darkMode} />

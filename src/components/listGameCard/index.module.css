@@ -43,6 +43,7 @@
 
 .thumbsUp,
 .thumbsDown {
+    transition: 0.5s;
     cursor: pointer;
     fill: #bababa;
 }
