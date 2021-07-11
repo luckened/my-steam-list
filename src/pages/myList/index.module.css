@@ -1,0 +1,5 @@
+.myListContainer {
+    height: calc(100% - 118px);
+    width: 80%;
+    margin: 10px auto;
+}

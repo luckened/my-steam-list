@@ -6,7 +6,7 @@ const GameCard = (props) => {
     const tagGroup = tagList.map((name) => <GameTag name={name} />);
     return (
         <span className={styles.card}>
-            <img className={styles.image} src={image} />
+            <img className={styles.image} src={image} alt={`${name}'s`} />
             <div className={styles.title}>{name}</div>
             <div className={`${styles.tagGroup} ${styles.scrollbar}`}>
                 {tagGroup}

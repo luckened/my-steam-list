@@ -4,6 +4,7 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import Profile from "./pages/profile/index";
 import Home from "./pages/home";
+import MyList from "./pages/myList";
 import styles from "./index.module.css";
 
 const App = () => {
@@ -23,7 +24,9 @@ const App = () => {
                 <Route path="/profile">
                     <Profile darkMode={darkMode} isMyProfile={true} />
                 </Route>
-                <Route path="/mylist">{/* Component */}</Route>
+                <Route path="/mylist">
+                    <MyList />
+                </Route>
             </Switch>
             <Footer darkMode={darkMode} />
         </div>

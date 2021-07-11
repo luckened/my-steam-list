@@ -1,5 +1,5 @@
 .profileContainer {
-    height: 90%;
+    height: calc(100% - 118px);
     width: 80%;
     margin: 10px auto;
 }
