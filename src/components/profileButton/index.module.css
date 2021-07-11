@@ -1,0 +1,55 @@
+.profileButton {
+	color: var(--light-primary);
+	box-sizing: border-box;
+	position: relative;
+	box-sizing: border-box;
+	outline: none;
+	width: fit-content;
+	transition: all 0.4s ease-in;
+}
+
+.profileButton:focus {
+	outline: none;
+}
+
+.profileButton img {
+	border-radius: 50%;
+	width: 65px;
+}
+
+.popupMenu {
+	width: 200%;
+	background-color: var(--dark-tertiary);
+	border: 1px solid var(--dark-green);
+	border-radius: 15px;
+
+	box-sizing: border-box;
+	position: absolute;
+	left: -75%;
+	padding: 0 10px;
+	transition: all 500ms;
+	z-index: 10;
+}
+.popupMenuDark {
+	background-color: var(--dark-secondary);
+}
+
+.popupMenu > span {
+	display: flex;
+	padding: 10px 20px;
+	justify-content: space-between;
+	align-content: center;
+	background-color: inherit;
+	font-size: 1.2rem;
+}
+.popupMenu > span:hover {
+	background-color: rgba(70, 68, 68, 0.315);
+}
+.popupMenu > span:not(:last-child) {
+	border-bottom: 1px solid var(--dark-green);
+}
+.popupMenu > span > a {
+	font-family: "SansationLight", sans-serif;
+	text-decoration: none;
+	margin: auto 5px;
+}
