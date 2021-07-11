@@ -1,7 +1,7 @@
 .tag {
     font-family: "SansationLight", sans-serif;
-    background-color: #171a21;
-    border: 1px solid #57ad42;
+    background-color: var(--dark-secondary);
+    border: 1px solid var(--light-green);
     border-radius: 50px;
     color: #ffffff;
     padding: 3px 15px;
