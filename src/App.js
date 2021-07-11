@@ -8,10 +8,12 @@ import styles from "./index.module.css";
 
 const App = () => {
     const [darkMode, setDarkMode] = useState(true);
+    const [isLogged, setIsLogged] = useState(false);
 
     return (
         <div className={`${styles.app} ${darkMode ? styles.appDark : ""}`}>
-            <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+            <Header darkMode={darkMode} setDarkMode={setDarkMode}
+                isLogged={isLogged} setIsLogged={setIsLogged} />
             <Switch>
                 <Route path="/" exact>
                     <Home darkMode={darkMode} setDarkMode={setDarkMode} />

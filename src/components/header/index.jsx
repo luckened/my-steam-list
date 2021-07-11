@@ -2,8 +2,14 @@ import { FaList } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logonobackground.svg";
 import styles from "./index.module.css";
+import ProfileButton from "../profileButton";
+import profileImage from "../../assets/profileplaceholder.png";
 
-const Header = ({ isLogged, darkMode, setDarkMode }) => (
+const profileData = {
+    image: profileImage,
+};
+
+const Header = ({ isLogged, setIsLogged, darkMode, setDarkMode }) => (
     <header className={`${styles.header} ${darkMode ? styles.headerDark : ""}`}>
         <nav className={styles.nav}>
             <Link to="/">
@@ -13,15 +19,17 @@ const Header = ({ isLogged, darkMode, setDarkMode }) => (
                 <FaList className={styles.listIcon} color="white" size={25} />
                 Minha Lista
             </Link>
-            <Link to="/profile" className={styles.myListButton}>
-                <FaList color="white" size={30} />
-                Perfil
-            </Link>
         </nav>
         <input
             onChange={() => setDarkMode(!darkMode)}
             className={styles.toggle}
             type="checkbox"
+        />
+        <ProfileButton
+            isLogged={isLogged}
+            setIsLogged={setIsLogged}
+            darkMode={darkMode}
+            profileData={profileData}
         />
     </header>
 );
