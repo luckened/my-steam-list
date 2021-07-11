@@ -1,8 +1,10 @@
 .myListContainer {
     height: calc(100% - 118px);
     width: 80%;
+    padding: 20px 0;
     margin: 10px auto;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
+    box-sizing: border-box;
 }

@@ -8,7 +8,7 @@ import { LoginModal, SignupModal } from "../userAuthentication";
 
 const ProfileButton = ({ isLogged, setIsLogged, darkMode, profileData }) => {
     const [popupMenuIsOpen, setPopupMenuIsOpen] = useState(false);
-    const [signUpIsOpen, setSignUpIsOpen] = useState(true);
+    const [signUpIsOpen, setSignUpIsOpen] = useState(false);
     const [loginIsOpen, setLoginIsOpen] = useState(false);
 
     const handleClick = () => {
@@ -78,18 +78,18 @@ const PopupMenu = ({
                 </span>
                 <span onClick={handleLoginModal}>
                     <RiLogoutBoxRLine size={30} />
-                    <a>Logout</a>
+                    Logout
                 </span>
             </>
         ) : (
             <>
                 <span onClick={handleSignUpModal}>
                     <BsPlusCircle size={30} />
-                    <a>Sign Up</a>
+                    Sign Up
                 </span>
                 <span onClick={handleLoginModal}>
                     <RiLoginBoxLine size={30} />
-                    <Link to="/login">Login</Link>
+                    Login
                 </span>
             </>
         );
