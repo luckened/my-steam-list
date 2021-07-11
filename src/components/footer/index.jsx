@@ -10,6 +10,7 @@ const Footer = ({ darkMode }) => (
                 className={styles.icons}
                 href="https://www.instagram.com/luckened"
                 target="_blank"
+                rel="noreferrer"
             >
                 <FaInstagram size={30} color="white" />
             </a>
@@ -17,6 +18,7 @@ const Footer = ({ darkMode }) => (
                 className={styles.icons}
                 href="https://www.google.com"
                 target="_blank"
+                rel="noreferrer"
             >
                 <FaYoutube size={30} color="white" />
             </a>
@@ -24,6 +26,7 @@ const Footer = ({ darkMode }) => (
                 className={styles.icons}
                 href="https://www.google.com"
                 target="_blank"
+                rel="noreferrer"
             >
                 <FaTwitter size={30} color="white" />
             </a>

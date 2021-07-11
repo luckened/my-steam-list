@@ -13,7 +13,11 @@ const Header = ({ isLogged, setIsLogged, darkMode, setDarkMode }) => (
     <header className={`${styles.header} ${darkMode ? styles.headerDark : ""}`}>
         <nav className={styles.nav}>
             <Link to="/">
-                <img src={logo} className={styles.logo} alt="logo" />
+                <img
+                    src={logo}
+                    className={styles.logo}
+                    alt="mySteamList's logo"
+                />
             </Link>
             <Link to="/mylist" className={styles.myListButton}>
                 <FaList className={styles.listIcon} color="white" size={25} />

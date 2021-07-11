@@ -16,7 +16,7 @@ const ProfileButton = ({ isLogged, setIsLogged, darkMode, profileData }) => {
         <>
             <button className={`${styles.profileButton}`} onClick={handleClick}>
                 {isLogged ? (
-                    <img src={profileImage}></img>
+                    <img src={profileImage} alt="profile"></img>
                 ) : (
                     <IoPersonCircle size={63.28} />
                 )}
@@ -58,14 +58,18 @@ const PopupMenu = ({ isLogged, setIsLogged, darkMode }) => {
                 </span>
                 <span onClick={handleLogin}>
                     <RiLoginBoxLine size={30} />
-                    <a>Login</a>
+                    <Link to="/login">Login</Link>
                 </span>
             </>
         );
     };
 
     return (
-        <div class={`${styles.popupMenu} ${darkMode && styles.popupMenuDark}`}>
+        <div
+            className={`${styles.popupMenu} ${
+                darkMode && styles.popupMenuDark
+            }`}
+        >
             <PopUpMenuItems />
         </div>
     );

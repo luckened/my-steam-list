@@ -18,7 +18,7 @@ const UserData = ({
             <img
                 className={styles.profileImage}
                 src={imgLink}
-                alt={`${userName}'s profile picture`}
+                alt={`${userName}'s profile`}
             />
             {isEditMode && (
                 <>

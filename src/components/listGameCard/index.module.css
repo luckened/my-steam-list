@@ -1,0 +1,17 @@
+.gameCardContainer {
+    width: 300px;
+    font-family: "SansationLight", sans-serif;
+}
+
+.cardImage {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    margin: 0 15px 15px 0;
+}
+
+.cardName {
+    color: var(--light-primary);
+    display: inline-block;
+    font-family: inherit;
+}

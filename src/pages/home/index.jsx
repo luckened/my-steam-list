@@ -1,6 +1,6 @@
 import { GameCardGroup } from "../../components/gameCard";
 import { ReactComponent as SearchIcon } from "../../assets/search.svg";
-import cardList from "./cardList";
+import { a } from "./cardList";
 import styles from "./index.module.css";
 
 // A functional component named home that renders the GameCardGroup component.
@@ -13,7 +13,7 @@ const Home = ({ darkMode, setDarkMode }) => (
             <SearchIcon className={styles.searchIcon} />
             <input type="text" placeholder="Search for a game" />
         </div>
-        <GameCardGroup className={styles.GameCardGroup} cardList={cardList} />
+        <GameCardGroup className={styles.GameCardGroup} cardList={a} />
     </div>
 );
 
