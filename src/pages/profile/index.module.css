@@ -2,11 +2,12 @@
     height: calc(100% - 118px);
     width: 80%;
     margin: 10px auto;
+    color: var(--light-primary);
 }
 
 .pageHeader {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
 }

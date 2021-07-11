@@ -9,9 +9,7 @@ const Profile = ({ userId, isMyProfile, darkMode }) => {
     return (
         <div className={styles.profileContainer}>
             <div className={styles.pageHeader}>
-                <h1 className={styles.pageName}>
-                    {isMyProfile ? "My profile" : "Profile"}
-                </h1>
+                edit profile
                 {isMyProfile && (
                     <button onClick={() => setIsEditMode(!isEditMode)}>
                         <FaEdit color="white" size={25} />

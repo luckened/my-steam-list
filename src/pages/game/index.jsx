@@ -27,8 +27,6 @@ const Game = ({ id }) => {
         dislikes: 150,
     };
 
-    const approve = 0;
-
     return (
         <div
             // style={{
@@ -38,7 +36,11 @@ const Game = ({ id }) => {
             // }}
             className={styles.gameContainer}
         >
-            <img src={game.image} className={styles.backgroundImage} />
+            <img
+                alt={`game ${game.title}`}
+                src={game.image}
+                className={styles.backgroundImage}
+            />
             <div className={styles.gameInfoContainer}>
                 <h1 className={styles.title}>{game.title}</h1>
                 <p>{game.description}</p>
@@ -46,7 +48,11 @@ const Game = ({ id }) => {
             </div>
 
             <div className={styles.imageContainer}>
-                <img src={game.image} className={styles.image} />
+                <img
+                    alt={`game ${game.title}`}
+                    src={game.image}
+                    className={styles.image}
+                />
                 <div className={styles.tagsContainer}>
                     {game.tags.map((item) => (
                         <GameTag name={item} className={styles.gameTag} />

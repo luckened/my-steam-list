@@ -12,10 +12,11 @@ body,
     --dark-primary: #000;
     --dark-secondary: #171a21;
     --dark-tertiary: #1d1e20;
+    --dark-quaternary: #1a1c1c;
     --light-primary: #fff;
     --light-secondary: #616161;
-    --dark-blue: #171a21;
     --dark-green: #595f47;
+    --medium-green: #4a8b38;
     --light-green: #57ad42;
 }
 
