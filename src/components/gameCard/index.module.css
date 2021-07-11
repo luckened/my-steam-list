@@ -1,6 +1,6 @@
 /* Card Properties */
 .card {
-    background-color: var(--dark-blue);
+    background-color: var(--dark-secondary);
     color: var(--light-primary);
     border: 2px solid var(--dark-green);
     border-radius: 10px;
