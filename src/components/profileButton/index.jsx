@@ -4,11 +4,37 @@ import { RiLogoutBoxRLine, RiLoginBoxLine } from "react-icons/ri";
 import styles from "./index.module.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { LoginModal, SignupModal } from "../userAuthentication";
 
 const ProfileButton = ({ isLogged, setIsLogged, darkMode, profileData }) => {
-    const [isOpen, setIsOpen] = useState(false);
+    const [popupMenuIsOpen, setPopupMenuIsOpen] = useState(false);
+    const [signUpIsOpen, setSignUpIsOpen] = useState(true);
+    const [loginIsOpen, setLoginIsOpen] = useState(false);
+
     const handleClick = () => {
-        setIsOpen(!isOpen);
+        setPopupMenuIsOpen(!popupMenuIsOpen);
+    };
+
+    const handleSignUpModal = ({ close }) => {
+        if (close) {
+            setSignUpIsOpen(false);
+        } else {
+            setSignUpIsOpen(!signUpIsOpen);
+        }
+    };
+
+    const handleLoginModal = ({ close }) => {
+        if (close) {
+            setLoginIsOpen(false);
+        } else if (isLogged) {
+            setLoginIsOpen(false);
+            setIsLogged(false);
+        } else if (!isLogged && loginIsOpen) {
+            setLoginIsOpen(false);
+            setIsLogged(true);
+        } else if (!isLogged && !loginIsOpen) {
+            setLoginIsOpen(true);
+        }
     };
 
     const { image: profileImage } = profileData;
@@ -20,43 +46,48 @@ const ProfileButton = ({ isLogged, setIsLogged, darkMode, profileData }) => {
                 ) : (
                     <IoPersonCircle size={63.28} />
                 )}
-                {isOpen && (
+                {popupMenuIsOpen && (
                     <PopupMenu
                         isLogged={isLogged}
                         setIsLogged={setIsLogged}
                         darkMode={darkMode}
+                        handleLoginModal={handleLoginModal}
+                        handleSignUpModal={handleSignUpModal}
                     />
                 )}
             </button>
+            {loginIsOpen && <LoginModal handleLogin={handleLoginModal} />}
+            {signUpIsOpen && <SignupModal handleSignUp={handleSignUpModal} />}
         </>
     );
 };
 
-const PopupMenu = ({ isLogged, setIsLogged, darkMode }) => {
+const PopupMenu = ({
+    isLogged,
+    setIsLogged,
+    darkMode,
+    handleLoginModal,
+    handleSignUpModal,
+}) => {
     const PopUpMenuItems = () => {
-        const handleLogin = () => {
-            console.log("login");
-            setIsLogged(!isLogged);
-        };
-
         return isLogged ? (
             <>
                 <span>
                     <BsFillPersonFill size={30} />
                     <Link to="/profile">My Profile</Link>
                 </span>
-                <span onClick={handleLogin}>
+                <span onClick={handleLoginModal}>
                     <RiLogoutBoxRLine size={30} />
-                    <Link>Logout</Link>
+                    <a>Logout</a>
                 </span>
             </>
         ) : (
             <>
-                <span>
+                <span onClick={handleSignUpModal}>
                     <BsPlusCircle size={30} />
-                    <Link>Sign Up</Link>
+                    <a>Sign Up</a>
                 </span>
-                <span onClick={handleLogin}>
+                <span onClick={handleLoginModal}>
                     <RiLoginBoxLine size={30} />
                     <Link to="/login">Login</Link>
                 </span>
