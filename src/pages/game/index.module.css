@@ -1,0 +1,134 @@
+.gameContainer {
+    height: calc(100% - 118px);
+    width: 80%;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.gameInfoContainer {
+    color: #fff;
+    font-family: "SansationLight", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20%;
+    height: 40%;
+    z-index: 1;
+}
+
+.imageContainer {
+    z-index: 1;
+    width: 50%;
+}
+
+.image {
+    border: 1px solid var(--dark-green);
+    border-radius: 8px;
+    width: 100%;
+}
+
+.ratingContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 30%;
+    width: 200px;
+    z-index: 1;
+    color: #fff;
+    font-family: "SansationLight", sans-serif;
+    font-size: 20px;
+}
+
+.starsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 85%;
+}
+
+.title {
+    font-size: 30px;
+}
+
+.gameDescription {
+}
+
+.gameInfo {
+}
+
+.backgroundImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.2;
+    object-fit: cover;
+    display: block;
+    z-index: 0;
+}
+
+.tagsContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.gameTag {
+    margin-bottom: 15px;
+}
+
+.listAddButton {
+    display: flex;
+    color: #fff;
+    width: 100%;
+    padding: 0;
+    font-family: "SansationLight", sans-serif;
+    font-size: 20px;
+    transition: 0.5s;
+}
+
+.listAddButton:hover {
+    color: #f00;
+    stroke: #f00;
+}
+
+.listAddButton:hover .heart {
+    stroke: #f00;
+}
+
+.heart {
+    transition: 0.5s;
+    stroke: #777777;
+    margin-right: 20px;
+}
+
+.thumbsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.thumbsUp,
+.thumbsDown {
+    transition: 0.5s;
+    cursor: pointer;
+    fill: #bababa;
+}
+
+.thumbsUp {
+    fill: #0f0;
+}
+
+.thumbsDown {
+    transform: rotate(180deg) translateY(-4px);
+    fill: #f00;
+}
+
+.thumbsUp:hover {
+    fill: green;
+}
+
+.thumbsDown:hover {
+    fill: #a00;
+}
