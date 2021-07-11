@@ -1,17 +1,74 @@
 .gameCardContainer {
-    width: 300px;
-    font-family: "SansationLight", sans-serif;
+    width: 275px;
+    height: 150px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.gameCardContainer:not(:last-child) {
+    margin: 0 30px 30px 0;
 }
 
 .cardImage {
-    width: 200px;
-    height: 200px;
+    cursor: pointer;
+    width: 120px;
+    height: 120px;
     border-radius: 8px;
-    margin: 0 15px 15px 0;
 }
 
 .cardName {
     color: var(--light-primary);
     display: inline-block;
     font-family: inherit;
+    font-family: "SansationLight", sans-serif;
+}
+
+.cardApproved {
+    color: var(--light-primary);
+    display: inline-block;
+    font-family: "SansationLight", sans-serif;
+}
+
+.column {
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.thumbsContainer {
+    width: 80%;
+    justify-content: space-between;
+}
+
+.thumbsUp,
+.thumbsDown {
+    cursor: pointer;
+    fill: #bababa;
+}
+
+.thumbsUp:hover {
+    fill: green;
+}
+
+.thumbsDown {
+    transform: rotate(180deg) translateY(-12px);
+}
+
+.thumbsDown:hover {
+    fill: #a00;
+}
+
+.dislike {
+    fill: #f00;
+}
+
+.like {
+    fill: #0f0;
+}
+
+.gameCardContainer,
+.column,
+.thumbsContainer {
+    display: flex;
 }
