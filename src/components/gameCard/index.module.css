@@ -4,17 +4,40 @@
     color: var(--light-primary);
     border: 2px solid var(--dark-green);
     border-radius: 10px;
+    box-sizing: border-box;
+    transition: 0.5s;
 
     box-sizing: border-box;
     max-width: 250px;
     height: fit-content;
 
     display: flex;
+    position: relative;
     flex-wrap: wrap;
     align-content: space-between;
     flex-basis: 1em;
     flex-grow: 0;
     flex-shrink: 0;
+}
+
+.card:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.plusIcon {
+    display: none;
+    transition: 0.5s;
+}
+
+.card:hover .plusIcon {
+    display: block;
+    transition: 0.5s;
+
+    z-index: 100;
+    position: absolute;
+    opacity: 1 !important;
+    transform: translate(110px, 70px);
 }
 
 .card:not(:last-child) {
