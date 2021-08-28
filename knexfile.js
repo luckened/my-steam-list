@@ -1,22 +1,22 @@
 // Update with your config settings.
 
 module.exports = {
-    // development: {
-    //     client: "pg",
-    //     connection: {
-    //         host: "127.0.0.1",
-    //         user: "[db_username]",
-    //         password: "[db_password]",
-    //         database: "[db_name]",
-    //         charset: "utf8",
-    //     },
-    //     migrations: {
-    //         directory: __dirname + "/knex/migrations",
-    //     },
-    //     seeds: {
-    //         directory: __dirname + "/knex/seeds",
-    //     },
-    // },
+    development: {
+        client: "pg",
+        connection: {
+            host: process.env.DB_HOST,
+            user: process.env.DB_USER,
+            password: process.env.DB_PASSWORD,
+            database: process.env.DATABASE,
+            charset: "utf8",
+        },
+        migrations: {
+            directory: __dirname + "/knex/migrations",
+        },
+        seeds: {
+            directory: __dirname + "/knex/seeds",
+        },
+    },
     production: {
         client: "pg",
         connection: process.env.DATABASE_URL,
