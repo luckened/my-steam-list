@@ -1,11 +1,26 @@
 const express = require("express");
+const bodyParser = require("body-parser");
+const db = require("./db");
 const PORT = process.env.PORT || 3001;
-// const knex = require("../knex/knex.js");
+const dotenv = require("dotenv");
+dotenv.config();
+
 const app = express();
 
-app.get("/", (req, res) => {
-    // use the knex variable above to create dynamic queries
-});
+app.use(express.json());
+
+app.use(express.urlencoded({
+  extended: true
+}));
+
+// tag
+app.use('/tag', require('./routes/tag'));
+
+// game
+app.use('/game', require('./routes/game'));
+
+// client
+app.use('/client', require('./routes/client'));
 
 app.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}`);
