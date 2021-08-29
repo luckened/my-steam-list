@@ -1,8 +1,7 @@
 
 exports.up = async function (knex, Promise) {
 	await knex.schema.createTable('tag', function (table) {
-		table.increments('id').primary();
-		table.string('name', 255).notNullable().unique();
+		table.string('name', 255).primary();
 		table.string('url', 255)
 	});
 	await knex.schema.createTable('game', function (table) {
@@ -18,7 +17,7 @@ exports.up = async function (knex, Promise) {
 		table.string('developer', 255);
 		table.string('publisher', 255);
 		table.float('meanRate');
-		table.specificType('tags', 'integer[]');
+		table.specificType('tags', 'text[]');
 	});
 	await knex.schema.createTable('client', function (table) {
 		table.increments('id').primary();
