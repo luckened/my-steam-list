@@ -12,22 +12,11 @@ router.get("/", async (req, res) => {
 	}
 });
 
-router.get("/:id", async (req, res) => {
-	try {
-		const { id } = req.params;
-		const data = await db('tag').where({ id });
-		res.json({ tag: data[0] });
-	} catch (err) {
-		console.log(err.message);
-		res.status(400).send({ error: err.message });
-	}
-});
-
-router.get("/name/:name", async (req, res) => {
+router.get("/:name", async (req, res) => {
 	try {
 		const { name } = req.params;
 		const data = await db('tag').where({ name: name });
-		res.json({ tag: data[0] });
+		res.json({ tags: data[0] });
 	}
 	catch (err) {
 		console.log(err.message);
@@ -38,7 +27,7 @@ router.get("/name/:name", async (req, res) => {
 router.post("/", async (req, res) => {
 	try {
 		const { name, url } = req.body;
-		const data = await db('tag').insert({ name, url });
+		const data = await db('tag').insert({ name, url }, 'name');
 		res.json({ data });
 	} catch (err) {
 		console.log(err.message);
