@@ -22,6 +22,9 @@ app.use('/game', require('./routes/game'));
 // client
 app.use('/client', require('./routes/client'));
 
+// rating
+app.use('/rating', require('./routes/rating'));
+
 app.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}`);
 });
