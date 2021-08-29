@@ -1,10 +1,11 @@
 import axios from "axios";
 
-const apiUrl = "api/";
+const apiUrl = "http://localhost:3001/";
 
-const getGames = () => {
-    const games = axios.get(apiUrl);
-    return games;
+const getAllGames = async () => {
+    const games = await axios.get(`${apiUrl}game`);
+
+    return games.data.game;
 };
 
-export { getGames };
+export { getAllGames };
