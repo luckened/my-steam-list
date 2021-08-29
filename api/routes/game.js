@@ -32,28 +32,37 @@ router.get('/steam/:steamId', async function (req, res, next) {
 	}
 });
 
+router.get('/name/:name', async function (req, res, next) {
+	try {
+		const data = await db('game').where({ name: req.params.name });
+		res.json({ game: data });
+	} catch (err) {
+		console.log(err.message);
+		res.status(400).send({ error: err.message });
+	}
+});
+
+
 router.post('/', async function (req, res, next) {
 	try {
 		const body = req.body;
 		const developers = body.addData.developers.map(b => b.name);
 		const publishers = body.addData.publishers.map(b => b.name);
 		const tags = body.addData.tags;
-		const dbTags = await db('tag');
-		const newTags = [];
 		const tagsNames = [];
+		const newTags = [];
+		const dbTags = await db.select('name').from('tag');
 		await db.transaction(async trx => {
 			tags.forEach((tag) => {
-				if (!dbTags.find(t => t.name == tag.name))
-					newTags.push(tag);
+				if (dbTags.find(t => t.name === tag.name))
+					tagsNames.push(tag.name);
 				else
-					tagsNames.push(dbTags.find(t => t.name == tag.name).name);
+					newTags.push(tag);
 			});
 			if (newTags.length > 0) {
-				console.log(newTags)
 				const insertNames = await trx('tag').insert(newTags, ['name']);
 				const newNames = insertNames.map(name => name.name);
 				tagsNames.push(...newNames);
-				console.log(tagsNames)
 			}
 			const insert = await trx('game').insert({
 				name: body.name,
@@ -61,7 +70,7 @@ router.post('/', async function (req, res, next) {
 				steamId: body.id,
 				bio: body.addData.bio,
 				photo: body.url,
-				releaseDate: body.addData.releaseDate,
+				// releaseDate: body.addData.releaseDate,
 				developer: developers,
 				publisher: publishers,
 				likesNumber: 0,
@@ -72,8 +81,8 @@ router.post('/', async function (req, res, next) {
 			res.status(200).send({ insert: insert });
 		});
 	} catch (err) {
-		console.log(err.message);
-		res.status(400).send({ error: err.message });
+		console.log(err.message, steamId);
+		res.status(400).send({ error: newTags });
 	}
 });
 
