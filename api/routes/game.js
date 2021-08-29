@@ -42,18 +42,32 @@ router.get('/name/:name', async function (req, res, next) {
 	}
 });
 
+const formatDate = (date)=>{
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
 
 router.post('/', async function (req, res, next) {
 	try {
 		const body = req.body;
 		const developers = body.addData.developers.map(b => b.name);
 		const publishers = body.addData.publishers.map(b => b.name);
-		const tags = body.addData.tags;
-		const tagsNames = [];
+		const date = formatDate = (body.addData.releaseDate);
+		const bodyTags = body.addData.tags;
 		const newTags = [];
+		const tagsNames = [];
 		const dbTags = await db.select('name').from('tag');
 		await db.transaction(async trx => {
-			tags.forEach((tag) => {
+			bodyTags.forEach((tag) => {
 				if (dbTags.find(t => t.name === tag.name))
 					tagsNames.push(tag.name);
 				else
@@ -69,8 +83,8 @@ router.post('/', async function (req, res, next) {
 				url: body.url,
 				steamId: body.id,
 				bio: body.addData.bio,
-				photo: body.url,
-				// releaseDate: body.addData.releaseDate,
+				photo: body.addData.img,
+				releaseDate: date,
 				developer: developers,
 				publisher: publishers,
 				likesNumber: 0,
