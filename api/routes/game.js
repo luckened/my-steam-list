@@ -81,8 +81,7 @@ router.post('/', async function (req, res, next) {
 			res.status(200).send({ insert: insert });
 		});
 	} catch (err) {
-		console.log(err.message, steamId);
-		res.status(400).send({ error: newTags });
+		res.status(400).send({ error: err.message });
 	}
 });
 
