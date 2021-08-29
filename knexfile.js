@@ -1,5 +1,6 @@
 // Update with your config settings.
-
+const dotenv = require("dotenv");
+dotenv.config();
 module.exports = {
     development: {
         client: "pg",
@@ -8,6 +9,7 @@ module.exports = {
             user: process.env.DB_USER,
             password: process.env.DB_PASSWORD,
             database: process.env.DATABASE,
+            ssl: { rejectUnauthorized: false },
             charset: "utf8",
         },
         migrations: {
