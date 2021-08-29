@@ -42,4 +42,14 @@ router.get('/game/:id', async function (req, res, next) {
 	}
 });
 
+router.post('/', async function (req, res, next) {
+	try {
+		const data = await db('rating').insert(req.body);
+		res.json({ rating: data });
+	} catch (err) {
+		console.log(err.message);
+		res.status(400).send({ error: err.message });
+	}
+})
+
 module.exports = router;
