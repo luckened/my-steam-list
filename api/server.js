@@ -36,6 +36,9 @@ app.use("/client", require("./routes/client"));
 // rating
 app.use("/rating", require("./routes/rating"));
 
+// dev
+app.use("/dev", require("./routes/dev"));
+
 app.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}`);
 });
