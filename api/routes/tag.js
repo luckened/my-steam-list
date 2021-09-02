@@ -27,8 +27,13 @@ router.get("/:name", async (req, res) => {
 router.post("/", async (req, res) => {
 	try {
 		const { name, url } = req.body;
-		const data = await db('tag').insert({ name, url }, 'name');
-		res.json({ data });
+		const tag = await db('tag').where({ name });
+		if (!tag) {
+			const data = await db('tag').insert({ name, url }, 'name');
+			res.json({ data });
+		} else {
+			res.status(400).send({ error: `Tag ${name} already exists` });
+		}
 	} catch (err) {
 		console.log(err.message);
 		res.status(404).send({ error: err.message });
