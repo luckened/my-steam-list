@@ -33,7 +33,6 @@
 .card:hover .plusIcon {
     display: block;
     transition: 0.5s;
-
     z-index: 100;
     position: absolute;
     opacity: 1 !important;
@@ -48,8 +47,9 @@
 .title {
     font-family: "SansationLight", sans-serif;
     width: 100%;
-    font-size: 1.8rem;
-    /* margin: 15px 0px; */
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
     padding: 2px;
     display: flex;
     justify-content: center;
