@@ -23,18 +23,10 @@ const ProfileButton = ({ isLogged, setIsLogged, darkMode, profileData }) => {
         }
     };
 
-    const handleLoginModal = ({ close }) => {
-        if (close) {
-            setLoginIsOpen(false);
-        } else if (isLogged) {
-            setLoginIsOpen(false);
-            setIsLogged(false);
-        } else if (!isLogged && loginIsOpen) {
-            setLoginIsOpen(false);
-            setIsLogged(true);
-        } else if (!isLogged && !loginIsOpen) {
-            setLoginIsOpen(true);
-        }
+    const handleLoginModal = (email, password) => {
+        setLoginIsOpen(false);
+
+        setIsLogged(true);
     };
 
     const { image: profileImage } = profileData;
@@ -51,24 +43,30 @@ const ProfileButton = ({ isLogged, setIsLogged, darkMode, profileData }) => {
                         isLogged={isLogged}
                         setIsLogged={setIsLogged}
                         darkMode={darkMode}
+                        openLogin={setLoginIsOpen}
+                        openSignUp={setSignUpIsOpen}
                         handleLoginModal={handleLoginModal}
                         handleSignUpModal={handleSignUpModal}
                     />
                 )}
             </button>
-            {loginIsOpen && <LoginModal handleLogin={handleLoginModal} />}
-            {signUpIsOpen && <SignupModal handleSignUp={handleSignUpModal} />}
+            {loginIsOpen && (
+                <LoginModal
+                    openLogin={setLoginIsOpen}
+                    handleLogin={handleLoginModal}
+                />
+            )}
+            {signUpIsOpen && (
+                <SignupModal
+                    openSignUp={setSignUpIsOpen}
+                    handleSignUp={handleSignUpModal}
+                />
+            )}
         </>
     );
 };
 
-const PopupMenu = ({
-    isLogged,
-    setIsLogged,
-    darkMode,
-    handleLoginModal,
-    handleSignUpModal,
-}) => {
+const PopupMenu = ({ isLogged, darkMode, openLogin, openSignUp }) => {
     const PopUpMenuItems = () => {
         return isLogged ? (
             <>
@@ -76,18 +74,18 @@ const PopupMenu = ({
                     <BsFillPersonFill size={30} />
                     <Link to="/profile">My Profile</Link>
                 </span>
-                <span onClick={handleLoginModal}>
+                <span>
                     <RiLogoutBoxRLine size={30} />
                     Logout
                 </span>
             </>
         ) : (
             <>
-                <span onClick={handleSignUpModal}>
+                <span onClick={() => openSignUp(true)}>
                     <BsPlusCircle size={30} />
                     Sign Up
                 </span>
-                <span onClick={handleLoginModal}>
+                <span onClick={() => openLogin(true)}>
                     <RiLoginBoxLine size={30} />
                     Login
                 </span>
