@@ -5,6 +5,8 @@ import { RiLoginBoxLine, RiLogoutBoxRLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { insertUser } from "../../api";
 import { LoginModal, SignupModal } from "../userAuthentication";
+import { toast } from "react-toastify";
+
 import styles from "./index.module.css";
 
 const ProfileButton = ({ isLogged, setIsLogged, darkMode, profileData }) => {
@@ -16,13 +18,27 @@ const ProfileButton = ({ isLogged, setIsLogged, darkMode, profileData }) => {
         setPopupMenuIsOpen(!popupMenuIsOpen);
     };
 
-    const handleSignUpModal = ({ name, userName, email, password, close }) => {
+    const handleSignUpModal = async ({
+        name,
+        userName,
+        email,
+        password,
+        close,
+    }) => {
         if (close) {
             setSignUpIsOpen(false);
             return;
         }
+        const inserted = await insertUser(name, userName, email, password);
 
-        insertUser(name, userName, email, password);
+        if (inserted) {
+            toast.success("Usuario cadastrado com sucesso!", {
+                position: toast.POSITION.TOP_CENTER,
+            });
+            setSignUpIsOpen(false);
+        } else {
+            toast.error("Erro ao criar usuario");
+        }
     };
 
     const handleLoginModal = (email, password) => {
