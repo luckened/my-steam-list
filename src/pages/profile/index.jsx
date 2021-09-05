@@ -1,17 +1,26 @@
 import UserData from "../../components/userData";
 import styles from "./index.module.css";
 import { FaEdit } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { getUserData } from "../../api";
 
 const Profile = ({ darkMode }) => {
     const history = useHistory();
     const [isEditMode, setIsEditMode] = useState(false);
-    const { id, userName, email, photo, bio } = JSON.parse(
-        localStorage.getItem("loggedUser")
-    );
-    const isMyProfile =
-        id.toString() === history.location.pathname.split("/")[2];
+    const userId = history.location.pathname.split("/")[2];
+    const [{ id, photo, name, userName, email, bio }, setUserData] = useState({});
+    const loggedUserId = JSON.parse(localStorage.getItem("loggedUser"))?.id
+    const isMyProfile = loggedUserId.toString() === userId;
+
+    useEffect(() => {
+        async function fetchData() {
+            const response = await getUserData(userId);
+            setUserData(response.data.client[0]);
+
+        }
+        fetchData();
+    }, []);
 
     return (
         <div className={styles.profileContainer}>
@@ -28,7 +37,8 @@ const Profile = ({ darkMode }) => {
             <div>
                 <UserData
                     imgLink={photo || "http://placekitten.com/200/300"}
-                    userName={userName}
+                    defaultUserName={userName}
+                    name={name}
                     email={email}
                     description={bio}
                     darkMode={darkMode}

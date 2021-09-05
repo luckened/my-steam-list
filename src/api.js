@@ -29,11 +29,33 @@ const login = async (email, password) => {
     } catch (e) {
         console.error(e);
     }
-    
+
     localStorage.setItem("loggedUser", JSON.stringify(res?.data?.client));
 
-	return res?.status === 200;
+    return res?.status === 200;
 };
 
+const getUserData = async (id) => {
+    let data;
+    try {
+        data = await axios.get(`${apiUrl}client/${id}`);
+    } catch (e) {
+        console.error(e);
+    }
 
-export { getAllGames, insertUser, login };
+    return data;
+};
+
+const updateProfile = async (email, userName, bio, photo) => {
+    const body = { email, userName, bio, photo };
+    let res;
+    try {
+        res = await axios.put(`${apiUrl}client/`, body);
+    } catch (e) {
+        console.error(e);
+    }
+
+    return res?.status === 200;
+};
+
+export { getAllGames, insertUser, login, getUserData, updateProfile };

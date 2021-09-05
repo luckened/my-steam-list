@@ -37,6 +37,38 @@ router.get("/", async function (req, res, next) {
 router.get("/:id", async function (req, res, next) {
     try {
         const data = await db("client").where({ id: req.params.id });
+        data.password = "";
+        res.json({ client: data });
+    } catch (err) {
+        console.log(err.message);
+        res.status(400).send({ error: err.message });
+    }
+});
+
+router.put("/", async function (req, res, next) {
+    try {
+        const body = req.body;
+        if (!body.email) throw new Error("email not found");
+
+        console.log(body)
+
+        const data = await db("client").where({ email: body.email }).update({
+            userName: body.userName,
+            bio: body.bio,
+            photo: body.photo,
+        });
+
+        // const data = await db("client")
+        //     .insert({
+        //         email: body.email,
+        //         name: "",
+        //         userName: body.userName,
+        //         bio: body.bio,
+        //         photo: body.photo,
+        //     })
+        //     .onConflict("email")
+        //     .merge(["userName", "bio", "photo"]);
+
         res.json({ client: data });
     } catch (err) {
         console.log(err.message);
