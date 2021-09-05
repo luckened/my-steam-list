@@ -22,7 +22,8 @@ exports.up = async function (knex, Promise) {
 	await knex.schema.createTable('client', function (table) {
 		table.increments('id').primary();
 		table.string('name', 255).notNullable();
-		table.string('email', 255).notNullable();
+    table.string('userName', 255).notNullable().unique();
+		table.string('email', 255).notNullable().unique();
 		table.string('password', 255).notNullable();
 		table.string('photo', 255);
 		table.text('bio');

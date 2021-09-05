@@ -53,7 +53,7 @@ const SignupModal = ({ openSignUp, handleSignUp }) => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
-                <button onClick={() => handleSignUp(name, userName, email, password)} className={styles.modalButton}>
+                <button onClick={() => handleSignUp({ name, userName, email, password })} className={styles.modalButton}>
                     Sign Up
                 </button>
             </div>
