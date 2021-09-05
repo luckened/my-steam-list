@@ -6,10 +6,11 @@ import { Link } from "react-router-dom";
 import { insertUser, login } from "../../api";
 import { LoginModal, SignupModal } from "../userAuthentication";
 import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
 
 import styles from "./index.module.css";
 
-const ProfileButton = ({ isLogged, setIsLogged, darkMode, profileData }) => {
+const ProfileButton = ({ isLogged, darkMode, profileData }) => {
     const [popupMenuIsOpen, setPopupMenuIsOpen] = useState(false);
     const [signUpIsOpen, setSignUpIsOpen] = useState(false);
     const [loginIsOpen, setLoginIsOpen] = useState(false);
@@ -44,11 +45,8 @@ const ProfileButton = ({ isLogged, setIsLogged, darkMode, profileData }) => {
     const handleLoginModal = async (email, password) => {
         const isLogged = await login(email, password);
 
-        setIsLogged(isLogged);
         if (isLogged) {
-            toast.success("Login efetuado com sucesso!", {
-                position: toast.POSITION.TOP_CENTER,
-            });
+            window.location.reload();
         } else {
             toast.error("Erro!\nemail ou senha incorretos");
         }
@@ -68,7 +66,6 @@ const ProfileButton = ({ isLogged, setIsLogged, darkMode, profileData }) => {
                 {popupMenuIsOpen && (
                     <PopupMenu
                         isLogged={isLogged}
-                        setIsLogged={setIsLogged}
                         darkMode={darkMode}
                         openLogin={setLoginIsOpen}
                         openSignUp={setSignUpIsOpen}
@@ -91,23 +88,28 @@ const ProfileButton = ({ isLogged, setIsLogged, darkMode, profileData }) => {
     );
 };
 
-const PopupMenu = ({
-    isLogged,
-    setIsLogged,
-    darkMode,
-    openLogin,
-    openSignUp,
-}) => {
+const PopupMenu = ({ isLogged, darkMode, openLogin, openSignUp }) => {
+    const history = useHistory();
+
     const PopUpMenuItems = () => {
+        const userId =
+            isLogged && JSON.parse(localStorage.getItem("loggedUser")).id;
+
         return isLogged ? (
             <>
                 <span>
                     <BsFillPersonFill size={30} />
-                    <Link to="/profile">My Profile</Link>
+                    <Link to={`/profile/${userId}`}>My Profile</Link>
                 </span>
-                <span onClick={() => setIsLogged(false)}>
+                <span
+                    onClick={() => {
+                        localStorage.removeItem("loggedUser");
+                        history.push("/");
+                        window.location.reload();
+                    }}
+                >
                     <RiLogoutBoxRLine size={30} />
-                    <Link to="/">Logout</Link>
+                    Logout
                 </span>
             </>
         ) : (

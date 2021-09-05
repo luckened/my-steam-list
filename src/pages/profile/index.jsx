@@ -2,26 +2,35 @@ import UserData from "../../components/userData";
 import styles from "./index.module.css";
 import { FaEdit } from "react-icons/fa";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
-const Profile = ({ userId, isMyProfile, darkMode }) => {
+const Profile = ({ darkMode }) => {
+    const history = useHistory();
     const [isEditMode, setIsEditMode] = useState(false);
+    const { id, userName, email, photo, bio } = JSON.parse(
+        localStorage.getItem("loggedUser")
+    );
+    const isMyProfile =
+        id.toString() === history.location.pathname.split("/")[2];
 
     return (
         <div className={styles.profileContainer}>
             <div className={styles.pageHeader}>
-                edit profile
                 {isMyProfile && (
-                    <button onClick={() => setIsEditMode(!isEditMode)}>
-                        <FaEdit color="white" size={25} />
-                    </button>
+                    <>
+                        <span>Editar perfil</span>
+                        <button onClick={() => setIsEditMode(!isEditMode)}>
+                            <FaEdit color="white" size={25} />
+                        </button>
+                    </>
                 )}
             </div>
             <div>
                 <UserData
-                    imgLink="https://super.abril.com.br/wp-content/uploads/2016/09/super_imggirafa.jpg?quality=70&strip=info&resize=680,453"
-                    userName="savinho"
-                    email="savinhord@gmail"
-                    description="salve salve yodinha. salve salve yodinha.salve salve yodinha. salve salve yodinha.salve salve yodinha. salve salve yodinha.salve salve yodinha. salve salve yodinha.salve salve yodinha. salve salve yodinha.salve salve yodinha. salve salve yodinha.salve salve yodinha. salve salve yodinha.salve salve yodinha. salve salve yodinha.salve salve yodinha. salve salve yodinha.salve salve yodinha. salve salve yodinha.salve salve yodinha. salve salve yodinha.salve salve yodinha. salve salve yodinha.salve salve yodinha. salve salve yodinha.salve salve yodinha. salve salve yodinha.salve salve yodinha. salve salve yodinha.salve salve yodinha. salve salve yodinha.salve salve yodinha. salve salve yodinha.salve salve yodinha. salve salve yodinha.salve salve yodinha. salve salve yodinha.salve salve yodinha. salve salve yodinha.salve salve yodinha. salve salve yodinha.salve salve yodinha. salve salve yodinha.salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. salve salve yodinha. "
+                    imgLink={photo || "http://placekitten.com/200/300"}
+                    userName={userName}
+                    email={email}
+                    description={bio}
                     darkMode={darkMode}
                     isEditMode={isEditMode}
                 />

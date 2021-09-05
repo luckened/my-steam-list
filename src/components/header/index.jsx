@@ -9,7 +9,7 @@ const profileData = {
     image: profileImage,
 };
 
-const Header = ({ isLogged, setIsLogged, darkMode, setDarkMode }) => (
+const Header = ({ isLogged, darkMode, setDarkMode }) => (
     <header className={`${styles.header} ${darkMode ? styles.headerDark : ""}`}>
         <nav className={styles.nav}>
             <Link to="/">
@@ -31,7 +31,6 @@ const Header = ({ isLogged, setIsLogged, darkMode, setDarkMode }) => (
         />
         <ProfileButton
             isLogged={isLogged}
-            setIsLogged={setIsLogged}
             darkMode={darkMode}
             profileData={profileData}
         />

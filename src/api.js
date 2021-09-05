@@ -24,14 +24,16 @@ const insertUser = async (name, userName, email, password) => {
 const login = async (email, password) => {
     const body = { email, password };
     let res;
-
     try {
         res = await axios.post(`${apiUrl}client/login`, body);
     } catch (e) {
         console.error(e);
     }
+    
+    localStorage.setItem("loggedUser", JSON.stringify(res?.data?.client));
 
-    return res?.status === 200;
+	return res?.status === 200;
 };
+
 
 export { getAllGames, insertUser, login };

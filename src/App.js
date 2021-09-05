@@ -8,11 +8,12 @@ import MyList from "./pages/myList";
 import Game from "./pages/game";
 import styles from "./index.module.css";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
     const [darkMode, setDarkMode] = useState(true);
-    const [isLogged, setIsLogged] = useState(false);
+    const isLogged = JSON.parse(localStorage.getItem("loggedUser"));
+    
     const gameId = "cs:go";
 
     return (
@@ -23,7 +24,6 @@ const App = () => {
                     darkMode={darkMode}
                     setDarkMode={setDarkMode}
                     isLogged={isLogged}
-                    setIsLogged={setIsLogged}
                 />
                 <Switch>
                     <Route path="/" exact>
@@ -31,8 +31,8 @@ const App = () => {
                     </Route>
                     <Route path="/users">{/* Component */}</Route>
                     <Route path="/home">{/* Component */}</Route>
-                    <Route path="/profile">
-                        <Profile darkMode={darkMode} isMyProfile={true} />
+                    <Route path="/profile/:id">
+                        <Profile darkMode={darkMode} />
                     </Route>
                     <Route path="/mylist">
                         <MyList />

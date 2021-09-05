@@ -23,7 +23,7 @@ const UserData = ({
             {isEditMode && (
                 <>
                     <label
-                        for="upload-photo"
+                        htmlFor="upload-photo"
                         className={styles.profileEditButton}
                     >
                         <FaEdit color="white" size={25} />

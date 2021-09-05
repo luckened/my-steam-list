@@ -72,8 +72,9 @@ router.post("/login", async (req, res, next) => {
         data = data[0];
 
         const success = await compare(body.password, data.password);
-        if (success) res.json({ client: data });
-        else throw new Error("Email or password does not match!");
+        if (success) {
+            res.json({ client: data });
+        } else throw new Error("Email or password does not match!");
     } catch (err) {
         console.log(err.message);
         res.status(400).send({ error: err.message });
