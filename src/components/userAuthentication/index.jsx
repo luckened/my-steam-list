@@ -32,19 +32,16 @@ const SignupModal = ({ openSignUp, handleSignUp }) => {
                 </div>
                 <div className={styles.modalForm}>
                     <input
-                        type="text"
                         className={styles.modalInput}
                         placeholder="Name"
                         onChange={(e) => setName(e.target.value)}
                     />
                     <input
-                        type="text"
                         className={styles.modalInput}
                         placeholder="Username"
                         onChange={(e) => setUsername(e.target.value)}
                     />
                     <input
-                        type="text"
                         className={styles.modalInput}
                         placeholder="Email"
                         onChange={(e) => setEmail(e.target.value)}
@@ -56,8 +53,8 @@ const SignupModal = ({ openSignUp, handleSignUp }) => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
-                <button onClick={handleSignUp} className={styles.modalButton}>
-                    sign up
+                <button onClick={() => handleSignUp(name, userName, email, password)} className={styles.modalButton}>
+                    Sign Up
                 </button>
             </div>
         </div>

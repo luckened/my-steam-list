@@ -1,10 +1,11 @@
+import { useState } from "react";
 import { BsFillPersonFill, BsPlusCircle } from "react-icons/bs";
 import { IoPersonCircle } from "react-icons/io5";
-import { RiLogoutBoxRLine, RiLoginBoxLine } from "react-icons/ri";
-import styles from "./index.module.css";
+import { RiLoginBoxLine, RiLogoutBoxRLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { insertUser } from "../../api";
 import { LoginModal, SignupModal } from "../userAuthentication";
+import styles from "./index.module.css";
 
 const ProfileButton = ({ isLogged, setIsLogged, darkMode, profileData }) => {
     const [popupMenuIsOpen, setPopupMenuIsOpen] = useState(false);
@@ -15,12 +16,13 @@ const ProfileButton = ({ isLogged, setIsLogged, darkMode, profileData }) => {
         setPopupMenuIsOpen(!popupMenuIsOpen);
     };
 
-    const handleSignUpModal = ({ close }) => {
+    const handleSignUpModal = ({ name, userName, email, password, close }) => {
         if (close) {
             setSignUpIsOpen(false);
-        } else {
-            setSignUpIsOpen(!signUpIsOpen);
+            return;
         }
+
+        insertUser(name, userName, email, password);
     };
 
     const handleLoginModal = (email, password) => {
@@ -45,8 +47,6 @@ const ProfileButton = ({ isLogged, setIsLogged, darkMode, profileData }) => {
                         darkMode={darkMode}
                         openLogin={setLoginIsOpen}
                         openSignUp={setSignUpIsOpen}
-                        handleLoginModal={handleLoginModal}
-                        handleSignUpModal={handleSignUpModal}
                     />
                 )}
             </button>
