@@ -3,7 +3,7 @@ import { BsFillPersonFill, BsPlusCircle } from "react-icons/bs";
 import { IoPersonCircle } from "react-icons/io5";
 import { RiLoginBoxLine, RiLogoutBoxRLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
-import { insertUser } from "../../api";
+import { insertUser, login } from "../../api";
 import { LoginModal, SignupModal } from "../userAuthentication";
 import { toast } from "react-toastify";
 
@@ -37,14 +37,23 @@ const ProfileButton = ({ isLogged, setIsLogged, darkMode, profileData }) => {
             });
             setSignUpIsOpen(false);
         } else {
-            toast.error("Erro ao criar usuario");
+            toast.error("Erro!\nemail ou username ja existentes");
         }
     };
 
-    const handleLoginModal = (email, password) => {
-        setLoginIsOpen(false);
+    const handleLoginModal = async (email, password) => {
+        const isLogged = await login(email, password);
 
-        setIsLogged(true);
+        setIsLogged(isLogged);
+        if (isLogged) {
+            toast.success("Login efetuado com sucesso!", {
+                position: toast.POSITION.TOP_CENTER,
+            });
+        } else {
+            toast.error("Erro!\nemail ou senha incorretos");
+        }
+
+        setLoginIsOpen(false);
     };
 
     const { image: profileImage } = profileData;
@@ -82,7 +91,13 @@ const ProfileButton = ({ isLogged, setIsLogged, darkMode, profileData }) => {
     );
 };
 
-const PopupMenu = ({ isLogged, darkMode, openLogin, openSignUp }) => {
+const PopupMenu = ({
+    isLogged,
+    setIsLogged,
+    darkMode,
+    openLogin,
+    openSignUp,
+}) => {
     const PopUpMenuItems = () => {
         return isLogged ? (
             <>
@@ -90,9 +105,9 @@ const PopupMenu = ({ isLogged, darkMode, openLogin, openSignUp }) => {
                     <BsFillPersonFill size={30} />
                     <Link to="/profile">My Profile</Link>
                 </span>
-                <span>
+                <span onClick={() => setIsLogged(false)}>
                     <RiLogoutBoxRLine size={30} />
-                    Logout
+                    <Link to="/">Logout</Link>
                 </span>
             </>
         ) : (
