@@ -35,10 +35,15 @@ https://my-steam-list.herokuapp.com/tag/FPS - (Busca por Nome - Exemplo: https:/
 
 ### endpoints para os ratings de jogos
 https://my-steam-list.herokuapp.com/rating - (Todas os ratings)
+
 https://my-steam-list.herokuapp.com/rating/:id - (Busca pelo id do rating - Exemplo: https://my-steam-list.herokuapp.com/rating/1)
+
 https://my-steam-list.herokuapp.com/rating/client/:id - (Busca pelo id do cliente - Exemplo: https://my-steam-list.herokuapp.com/rating/client/1)
+
 https://my-steam-list.herokuapp.com/rating/game/:id - (Busca pelo id do jogo - Exemplo: https://my-steam-list.herokuapp.com/rating/game/1)
 
 ### endpoints para os clientes
+
 https://my-steam-list.herokuapp.com/client - (Todos os clientes)
+
 https://my-steam-list.herokuapp.com/client/:id - (Busca pelo id do cliente - Exemplo: https://my-steam-list.herokuapp.com/client/76)
