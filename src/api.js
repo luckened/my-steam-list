@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = "http://localhost:3001/";
+const apiUrl = "https://my-steam-list.herokuapp.com/";
 
 const getAllGames = async () => {
     const games = await axios.get(`${apiUrl}game`);

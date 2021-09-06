@@ -22,7 +22,7 @@ const GameCard = ({ id, name, photo, tags }) => {
                     });
                 } else {
                     toast.error(
-                        "Erro!\nproblema ao adicionar jogo! Tente novamente"
+                        "Erro!\nproblema ao adicionar jogo! Já tentou fazer login?"
                     );
                 }
             }}
