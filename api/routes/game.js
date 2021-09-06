@@ -58,6 +58,30 @@ const formatDate = (date) => {
 	return [year, month, day].join('-');
 }
 
+router.put("/", async function (req, res, next) {
+	try {
+		const body = req.body;
+		if (!body.gameId || !body.userId) throw new Error("gameId or userId not found");
+		const user = await db('client').where({ id: body.userId });
+		const userGames = user[0].games
+
+		if(userGames.includes(body.gameId))
+			throw new Error("User already has this game");
+			
+		newGames = [...userGames, body.gameId];
+		
+		const data = await db("client").where({ id: body.userId }).update({
+			games: newGames,
+			bio: body.bio,
+			photo: body.photo,
+		});
+		res.json({ client: data });
+	} catch (err) {
+		console.log(err.message);
+		res.status(400).send({ error: err.message });
+	}
+});
+
 router.post('/', async function (req, res, next) {
 	try {
 		const body = req.body;

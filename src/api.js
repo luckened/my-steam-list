@@ -8,6 +8,18 @@ const getAllGames = async () => {
     return games.data.game;
 };
 
+const insertGame = async (userId, gameId) => {
+    const body = { userId, gameId };
+    let res;
+
+    try {
+        res = await axios.put(`${apiUrl}game`, body);
+    } catch (e) {
+        console.error(e);
+    }
+    return res?.status === 200;
+};
+
 const insertUser = async (name, userName, email, password) => {
     const body = { name, userName, email, password };
     let res;
@@ -29,7 +41,7 @@ const login = async (email, password) => {
     } catch (e) {
         console.error(e);
     }
-    if(res?.data?.client)
+    if (res?.data?.client)
         localStorage.setItem("loggedUser", JSON.stringify(res?.data?.client));
 
     return res?.status === 200;
@@ -54,11 +66,11 @@ const updateProfile = async (email, userName, bio, photo) => {
     } catch (e) {
         console.error(e);
     }
-    if(res?.status === 200){
+    if (res?.status === 200) {
         const currentUser = JSON.parse(localStorage.getItem("loggedUser"));
-        localStorage.setItem("loggedUser", JSON.stringify({...currentUser, ...body}));
+        localStorage.setItem("loggedUser", JSON.stringify({ ...currentUser, ...body }));
     }
     return res?.status === 200;
 };
 
-export { getAllGames, insertUser, login, getUserData, updateProfile };
+export { getAllGames, insertUser, login, getUserData, updateProfile, insertGame };
