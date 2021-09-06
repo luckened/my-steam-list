@@ -5,9 +5,13 @@
 
 ## Páginas previstas disponíveis
 
-### página de jogo
+### home listando todos os jogos disponiveis
 
-https://mysteamlist.vercel.app/game/cs:go
+https://mysteamlist.vercel.app/
+
+### páginas de jogo
+
+https://mysteamlist.vercel.app/game/:id
 
 ### minha lista de jogos selecionados
 
