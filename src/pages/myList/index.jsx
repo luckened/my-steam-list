@@ -1,44 +1,34 @@
 import styles from "./index.module.css";
 import { ListGameCard } from "../../components/listGameCard";
+import { useEffect, useState } from "react";
+import { getUserGames } from "../../api";
 
-const MyList = ({ darkMode }) => {
+const MyList = ({ isLogged, darkMode }) => {
+    const [gamesList, setGamesList] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const user = JSON.parse(localStorage.getItem("loggedUser"));
+            const gameList = await getUserGames(user.id);
+            console.log(gameList);
+            setGamesList(gameList);
+        };
+        fetchData();
+    }, []);
+
     return (
         <div className={styles.myListContainer}>
-            <ListGameCard
-                name="CS:GO"
-                image={
-                    "https://super.abril.com.br/wp-content/uploads/2016/09/super_imggirafa.jpg?quality=70&strip=info&resize=680,453"
-                }
-                rating={4}
-                approve={0}
-            />
-
-            <ListGameCard
-                name="Grand Chase"
-                image={
-                    "https://super.abril.com.br/wp-content/uploads/2016/09/super_imggirafa.jpg?quality=70&strip=info&resize=680,453"
-                }
-                rating={5}
-                approve={1}
-            />
-
-            <ListGameCard
-                name="New World"
-                image={
-                    "https://super.abril.com.br/wp-content/uploads/2016/09/super_imggirafa.jpg?quality=70&strip=info&resize=680,453"
-                }
-                rating={5}
-                approve={-1}
-            />
-
-            <ListGameCard
-                name="Rust"
-                image={
-                    "https://super.abril.com.br/wp-content/uploads/2016/09/super_imggirafa.jpg?quality=70&strip=info&resize=680,453"
-                }
-                rating={1}
-                approve={-1}
-            />
+            {gamesList.map((game) => (
+                <ListGameCard
+                    key={game.id}
+                    id={game.id}
+                    name={game.name}
+                    image={
+                        game.photo}
+                    rating={4}
+                    approve={0}
+                />
+            ))}
         </div>
     );
 };

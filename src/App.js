@@ -13,8 +13,6 @@ import "react-toastify/dist/ReactToastify.css";
 const App = () => {
     const [darkMode, setDarkMode] = useState(true);
     const isLogged = JSON.parse(localStorage.getItem("loggedUser"));
-    
-    const gameId = "cs:go";
 
     return (
         <>
@@ -38,8 +36,8 @@ const App = () => {
                         <MyList />
                     </Route>
 
-                    <Route path={`/game/${gameId}`}>
-                        <Game id={gameId} />
+                    <Route path="/game/:id">
+                        <Game />
                     </Route>
                 </Switch>
                 <Footer darkMode={darkMode} />

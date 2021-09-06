@@ -3,59 +3,49 @@ import GameTag from "../../components/gameTag";
 import ReactStars from "react-rating-stars-component";
 import { ReactComponent as Thumbs } from "../../assets/thumbs.svg";
 import { ReactComponent as Heart } from "../../assets/heart.svg";
+import { useHistory } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getGameById } from "../../api";
 
-const Game = ({ id }) => {
-    const game = {
-        title: "Counter-Strike: Global Offensive",
-        image: "https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg?t=1623182945",
-        description:
-            "Counter-Strike: Global Offensive (CS: GO) expande a jogabilidade de ação baseada em equipas que foi pioneira quando lançada há 12         anos atrás. O CS: GO apresenta-se com novos mapas, personagens,         armas e ainda oferece versões atualizadas de conteúdo do CS        clássico (de_dust2, etc.).",
-        info: "DATA DE LANÇAMENTO: 21 Ago, 2012 \nDEVELOPER: Valve, Hidden Path Entertainment EDITORA: Valve",
-        tags: [
-            "multiplayer",
-            "first person",
-            "jogo pra passar raiva",
-            "sim",
-            "SDFJKHSDF",
-            "SDFJKHSDF",
-            "coldzera na furia",
-            "hltv confirmed",
-            "fallen professor",
-        ],
-        score: 4.5,
-        likes: 100,
-        dislikes: 150,
-    };
+const Game = () => {
+    const history = useHistory();
+    const [game, setGame] = useState({});
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const gameId = history.location.pathname.split("/")[2];
+            const gameList = await getGameById(gameId);
+
+            setGame(gameList);
+        };
+        fetchData();
+    }, [history.location.pathname]);
 
     return (
         <div
-            // style={{
-            //     backgroundImage: `url(${game.image})`,
-            //     backgroundRepeat: "no-repeat",
-
-            // }}
             className={styles.gameContainer}
         >
             <img
-                alt={`game ${game.title}`}
-                src={game.image}
+                alt={`game ${game.name}`}
+                src={game.photo}
                 className={styles.backgroundImage}
             />
             <div className={styles.gameInfoContainer}>
-                <h1 className={styles.title}>{game.title}</h1>
-                <p>{game.description}</p>
-                <p>{game.info}</p>
+                <h1 className={styles.title}>{game.name}</h1>
+                {/* <p>{game.description}</p> */}
+                <p>{game.developer}</p>
+                <p>{game.publisher}</p>
             </div>
 
             <div className={styles.imageContainer}>
                 <img
-                    alt={`game ${game.title}`}
-                    src={game.image}
+                    alt={`game ${game.name}`}
+                    src={game.photo}
                     className={styles.image}
                 />
                 <div className={styles.tagsContainer}>
-                    {game.tags.map((item) => (
-                        <GameTag name={item} className={styles.gameTag} />
+                    {game?.tags?.map((item) => (
+                        <GameTag name={item} key={`key-${item}`} className={styles.gameTag} />
                     ))}
                 </div>
             </div>
@@ -63,10 +53,10 @@ const Game = ({ id }) => {
             <div className={styles.ratingContainer}>
                 <h2>mean score</h2>
                 <span className={styles.starsContainer}>
-                    {game.score}
+                    {game.meanRate}
                     <ReactStars
                         count={5}
-                        value={game.score}
+                        value={game.meanRate}
                         onChange={() => {}}
                         size={30}
                         isHalf={true}
@@ -75,21 +65,21 @@ const Game = ({ id }) => {
                 </span>
                 <h2>likes and deslikes</h2>
                 <div className={styles.thumbsContainer}>
-                    {game.likes}
+                    {game.likesNumber}
                     <Thumbs
                         className={styles.thumbsUp}
                         onClick={() =>
                             alert(
-                                `chama o post pra dar like no jogo ${game.title}`
+                                `chama o post pra dar like no jogo ${game.name}`
                             )
                         }
                     />
-                    {game.dislikes}
+                    {game.dislikesNumber}
                     <Thumbs
                         className={styles.thumbsDown}
                         onClick={() =>
                             alert(
-                                `chama o post pra dar dislike no jogo ${game.title}`
+                                `chama o post pra dar dislike no jogo ${game.name}`
                             )
                         }
                     />
@@ -97,7 +87,7 @@ const Game = ({ id }) => {
                 <button
                     className={styles.listAddButton}
                     onClick={() =>
-                        alert(`adiciona o jogo ${game.title} na lista`)
+                        alert(`adiciona o jogo ${game.name} na lista`)
                     }
                 >
                     <Heart className={styles.heart} />

@@ -8,6 +8,23 @@ const getAllGames = async () => {
     return games.data.game;
 };
 
+const getGameById = async (id) => {
+    const games = await axios.get(`${apiUrl}game/${id}`);
+
+    return games.data.game[0];
+};
+
+const getUserGames = async (id) => {
+    const user = await axios.get(`${apiUrl}client/${id}`);
+    const games = user.data.client[0].games;
+    
+    let allGames = await getAllGames();
+    allGames = allGames.filter((game) => games.includes(game.id));
+
+    return allGames;
+};
+
+
 const insertGame = async (userId, gameId) => {
     const body = { userId, gameId };
     let res;
@@ -73,4 +90,4 @@ const updateProfile = async (email, userName, bio, photo) => {
     return res?.status === 200;
 };
 
-export { getAllGames, insertUser, login, getUserData, updateProfile, insertGame };
+export { getAllGames, insertUser, login, getUserData, updateProfile, insertGame, getUserGames, getGameById };

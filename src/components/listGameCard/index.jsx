@@ -1,11 +1,15 @@
 import styles from "./index.module.css";
 import ReactStars from "react-rating-stars-component";
 import { ReactComponent as Thumbs } from "../../assets/thumbs.svg";
+import { useHistory } from "react-router-dom";
 
-const ListGameCard = ({ name, image, rating, approve }) => {
+
+const ListGameCard = ({ id, name, image, rating, approve }) => {
     const ratingChanged = (newRating) => {
         alert(`chama o post pra mudar a nota do game ${name} pra ${newRating}`);
     };
+    const history = useHistory();
+
 
     return (
         <span className={styles.gameCardContainer}>
@@ -14,7 +18,7 @@ const ListGameCard = ({ name, image, rating, approve }) => {
                     src={image}
                     className={styles.cardImage}
                     alt={`${name}'s`}
-                    onClick={() => alert(`abre pagina do jogo ${name}`)}
+                    onClick={() => history.push(`/game/${id}`)}
                 />
                 <span className={styles.cardName}>{name}</span>
             </span>
