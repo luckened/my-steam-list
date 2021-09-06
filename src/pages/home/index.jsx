@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { getAllGames } from "../../api";
 import { ReactComponent as SearchIcon } from "../../assets/search.svg";
 import { GameCardGroup } from "../../components/gameCard";
-import { a } from "./cardList";
 import styles from "./index.module.css";
 
 const Home = ({ darkMode, setDarkMode }) => {

@@ -54,7 +54,7 @@ const ProfileButton = ({ isLogged, darkMode, profileData }) => {
         setLoginIsOpen(false);
     };
 
-    const { image: profileImage } = profileData;
+    const profileImage = JSON.parse(localStorage.getItem("loggedUser"))?.photo;
     return (
         <>
             <button className={`${styles.profileButton}`} onClick={handleClick}>

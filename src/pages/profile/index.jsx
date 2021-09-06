@@ -9,7 +9,7 @@ const Profile = ({ darkMode }) => {
     const history = useHistory();
     const [isEditMode, setIsEditMode] = useState(false);
     const userId = history.location.pathname.split("/")[2];
-    const [{ id, photo, name, userName, email, bio }, setUserData] = useState({});
+    const [{ photo, name, userName, email, bio }, setUserData] = useState({});
     const loggedUserId = JSON.parse(localStorage.getItem("loggedUser"))?.id
     const isMyProfile = loggedUserId.toString() === userId;
 
@@ -20,7 +20,7 @@ const Profile = ({ darkMode }) => {
 
         }
         fetchData();
-    }, []);
+    }, [userId]);
 
     return (
         <div className={styles.profileContainer}>

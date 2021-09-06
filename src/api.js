@@ -29,8 +29,8 @@ const login = async (email, password) => {
     } catch (e) {
         console.error(e);
     }
-
-    localStorage.setItem("loggedUser", JSON.stringify(res?.data?.client));
+    if(res?.data?.client)
+        localStorage.setItem("loggedUser", JSON.stringify(res?.data?.client));
 
     return res?.status === 200;
 };
@@ -54,7 +54,10 @@ const updateProfile = async (email, userName, bio, photo) => {
     } catch (e) {
         console.error(e);
     }
-
+    if(res?.status === 200){
+        const currentUser = JSON.parse(localStorage.getItem("loggedUser"));
+        localStorage.setItem("loggedUser", JSON.stringify({...currentUser, ...body}));
+    }
     return res?.status === 200;
 };
 
